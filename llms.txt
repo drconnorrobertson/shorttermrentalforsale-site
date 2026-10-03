@@ -1,0 +1,10 @@
+# Short Term Rental For Sale
+> Marketplace and resource for buying and selling short-term rental properties.
+
+## About
+Short Term Rental For Sale connects buyers and sellers of short-term rental properties. The site provides listings, market data, and resources for investors looking to purchase turnkey STR properties or sell their existing vacation rentals.
+
+## Key Pages
+- Home: https://www.shorttermrentalforsale.com/
+- Listings: https://www.shorttermrentalforsale.com/listings
+- Resources: https://www.shorttermrentalforsale.com/resources
