@@ -15,9 +15,10 @@ function walk(dir){if(!fs.existsSync(dir))return;for(const e of fs.readdirSync(d
  const raw=fs.readFileSync(p,'utf8'),s=normalize(raw),lower=s.toLowerCase();files++;
  const name=/(?:\b(?:dr\.?\s*)?connor[\s\u00a0_-]*robertson\b|drconnor+robertson|connorrobertson)/i.test(s.replace(/<[^>]+>/g,' '));
  const domain=blocked.find(d=>lower.includes(d));
+ const unrelatedBrand=(policy.blockedBrandPatterns||[]).some(pattern=>new RegExp(pattern,'i').test(s.replace(/<[^>]+>/g,' ')));
  // Connor Davis is a different person; named references to him remain valid.
  const unqualified=/\bconnor\b/i.test(s.replace(/connor(?:[\s_-]+)davis/gi,''));
- if(name||domain||unqualified)failures.push({file:p,reason:name?'personal identity':domain?'personal domain '+domain:'unqualified personal name'});
+ if(name||domain||unqualified||unrelatedBrand)failures.push({file:p,reason:name?'personal identity':domain?'personal domain '+domain:unrelatedBrand?'unrelated brand identity':'unqualified personal name'});
  }}
 for(const root of roots)walk(path.resolve(root));
 console.log(JSON.stringify({files,violations:failures.length,failures:failures.slice(0,30)}));if(failures.length)process.exitCode=1;
