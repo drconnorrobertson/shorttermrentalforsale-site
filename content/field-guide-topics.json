@@ -1,0 +1,56 @@
+[
+  [
+    "seller-document-request-status-board",
+    "Track seller document requests by decision deadline",
+    "A buyer may request many records without knowing which unresolved item affects the next decision. A status board connects each request to the issue it addresses and the deadline that matters. Keep the board separate from contractual deadlines and have the responsible professionals confirm any legal consequences.",
+    "Seller request list;Purchase milestone calendar;Document receipt log;Open diligence questions",
+    "Tie each request to a decision;Record date requested and received;Identify incomplete responses;Assign follow-up before the relevant decision date",
+    "A document marked received may still be incomplete or cover the wrong period. Record review status separately from receipt status.",
+    "A hypothetical buyer receives revenue records for only six months after requesting a full year. The board records the partial response, identifies the missing period and keeps the annual revenue question open."
+  ],
+  [
+    "conveying-item-identifier-register",
+    "Identify the exact items expected to convey",
+    "Descriptions such as \u201cfurnished\u201d can leave the buyer uncertain about the actual items included. An identifier register uses room, item, condition and a photograph reference to support the transaction discussion. The executed agreement governs what conveys; this register helps the buyer and responsible professionals identify ambiguities.",
+    "Proposed included-item list;Room photographs;Seller clarification;Final handover evidence",
+    "Assign identifiers to disputed or important items;Record condition and exact description;Request clarification for exclusions;Compare final handover with the agreed list",
+    "Do not treat an inventory spreadsheet as a substitute for the purchase agreement. Ask the transaction professionals how any inclusion must be documented.",
+    "In an illustrative sale, the photographs show outdoor furniture that the seller intends to remove. The register identifies the set and prompts clarification before the buyer includes it in the opening plan."
+  ],
+  [
+    "inspection-follow-up-evidence-board",
+    "Track evidence for inspection follow-up items",
+    "An inspection report identifies findings, but the follow-up may require a specialist assessment, quote or documented repair. Track the next evidence needed for each material item. Keep the original report intact and distinguish a seller response from independent confirmation of completed work.",
+    "Original inspection report;Specialist recommendations;Repair quotes;Completion documents",
+    "Give each follow-up item a reference;State the evidence needed next;Assign the relevant professional or vendor;Record the result and remaining question",
+    "A photograph of work in progress may not establish that a technical concern was resolved. Ask the appropriate professional what completion evidence is relevant.",
+    "A hypothetical report recommends further evaluation of a system. The board records the specialist appointment, attaches the result and leaves any estimate or repair decision as a separate next step."
+  ],
+  [
+    "closing-to-first-access-plan",
+    "Plan the handoff from closing to first property access",
+    "Closing, possession and practical access may be different milestones. Confirm the agreed timing with the transaction professionals, then coordinate the operational tasks that depend on access. Keep vendor appointments conditional until the responsible parties confirm that entry is available.",
+    "Confirmed possession arrangements;Access handover contact;Vendor appointment list;Initial condition record",
+    "Confirm the agreed access milestone;Identify keys and access systems to be handed over;Schedule the first condition review;Notify vendors when access is confirmed",
+    "Do not infer permission to enter from a tentative closing date or an informal message. Coordinate through the responsible transaction parties.",
+    "In an illustrative purchase, delivery was planned for the morning after closing but access timing remains unconfirmed. The coordinator keeps the delivery conditional and confirms the handover before the carrier is dispatched."
+  ],
+  [
+    "seller-revenue-definition-crosswalk",
+    "Crosswalk seller revenue definitions before comparing totals",
+    "Seller statements, booking exports and bank deposits can describe different measures. A definition crosswalk records what each total includes and the period it covers. The worksheet helps the buyer reconcile the evidence without treating a headline booking number as verified owner income.",
+    "Booking export;Platform payout summary;Seller operating statement;Refund and fee records",
+    "Record period and accounting basis for each source;Separate accommodation charges from other amounts;Identify refunds and deductions;Explain timing differences before comparing totals",
+    "Do not force bank deposits to equal booking revenue by adding unexplained adjustments. Preserve the difference and request the missing evidence.",
+    "A hypothetical booking export includes guest charges before refunds, while a payout report reflects fees and payment timing. The crosswalk documents those definitions before the buyer evaluates any annual total."
+  ],
+  [
+    "buyer-open-item-handoff-to-design",
+    "Hand off unresolved purchase items to the design team",
+    "Some purchase questions affect furnishing decisions even after the buyer has selected a property. Record retained inventory uncertainty, access constraints and work that must precede installation. The handoff prevents design from approving orders based on assumptions that the acquisition team has not confirmed.",
+    "Open acquisition issue log;Retained inventory list;Property measurement status;Access and work schedule",
+    "Identify purchase issues that affect design;State which orders depend on each issue;Assign the person who will confirm the fact;Release the affected decision after evidence arrives",
+    "Do not label the design brief final while essential retained items or room measurements remain unknown. Keep those dependencies visible.",
+    "A hypothetical buyer expects to retain a bed frame, but its inclusion remains unresolved. The design handoff marks that item provisional and pauses the replacement decision until the purchase team confirms the final inventory."
+  ]
+]
