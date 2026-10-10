@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": true,
-  "buildCommand": "node scripts/build-content.mjs",
+  "buildCommand": "node scripts/build-content.mjs && node scripts/brand-check.mjs dist",
   "outputDirectory": "dist",
   "headers": [
     {

@@ -5,7 +5,7 @@ const root=process.cwd(), buyer=/rel="canonical" href="https:\/\/www\.shorttermr
 const domain=buyer?'shorttermrentalforsale.com':'investinshorttermrentals.com', site=buyer?'Short Term Rental For Sale':'Invest in Short Term Rentals';
 const origin='https://www.'+domain, out=path.join(root,'dist');
 fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(out);
-for(const item of fs.readdirSync(root)){if(['dist','scripts','.git','.vercel','node_modules','package.json','package-lock.json'].includes(item)||item.startsWith('.'))continue;fs.cpSync(path.join(root,item),path.join(out,item),{recursive:true});}
+for(const item of fs.readdirSync(root)){if(['dist','scripts','.git','.vercel','node_modules','package.json','package-lock.json','brand-check-policy.json','brand-link-policy.json'].includes(item)||item.startsWith('.'))continue;fs.cpSync(path.join(root,item),path.join(out,item),{recursive:true});}
 const e=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
 const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n);
