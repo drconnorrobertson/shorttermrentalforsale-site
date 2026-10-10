@@ -1,0 +1,56 @@
+{
+  "bnb-accelerator-site": [
+    "purchase-to-launch-responsibility-matrix",
+    "Build a purchase-to-launch responsibility matrix",
+    "A property can be acquired successfully while the opening stalls because nobody owns the next decision. A responsibility matrix names the person who prepares a decision, the owner who approves it and the team that must receive the result. Start before closing and revise it when scope changes.",
+    "Signed service scopes;Owner approval limits;Vendor contact roster;Target handover milestones",
+    "Assign one accountable owner to each milestone;Separate preparation from final approval;Name the recipient of each completed handoff;Record backup coverage for unavailable decision-makers",
+    "Do not list \u201cthe team\u201d as the only responsible party. A shared chat is a communication channel, not an assignment of accountability.",
+    "A hypothetical project has a designer ordering furniture and a manager arranging photography. The matrix assigns the designer to confirm installed inventory, the owner to approve substitutions and the manager to confirm photo readiness. A delayed bed remains visible until all three handoffs are documented."
+  ],
+  "mybnbdesign": [
+    "room-measurement-revision-control",
+    "Control revisions to rental room measurements",
+    "Room measurements can change after flooring, trim work or furniture removal. A measurement register identifies the version used for each purchase and marks assumptions that still need an on-site check. Preserve the previous version so a rejected item can be traced to the information available when it was approved.",
+    "Dated room plan;Photographs with room labels;Door and stair measurements;Current product dimensions",
+    "Give each room plan a version;Record finished surfaces and delivery constraints;Attach the version to the order approval;Recheck affected dimensions after scope changes",
+    "A room width alone does not establish that a sofa fits through a stair turn or leaves a usable circulation route. Record the whole path.",
+    "An illustrative room plan is revised after built-in storage is installed. The designer marks the old seating layout as superseded and rechecks the selected sofa before the order is released."
+  ],
+  "short-term-rental-secrets": [
+    "turnover-exception-escalation",
+    "Escalate turnover exceptions before guest arrival",
+    "A turnover exception is an issue that the normal cleaning checklist cannot close. Examples include missing inventory, damaged furnishings or a maintenance concern. Record the issue, evidence and decision owner immediately, then track whether the property can meet the promised guest setup before the next arrival.",
+    "Turnover checklist;Dated issue photographs;Arrival schedule;Approved escalation contacts",
+    "Separate cleaning work from repair decisions;Assign one person to approve the response;Record the expected completion time;Confirm the final setup before closing the issue",
+    "A message saying \u201csomeone is handling it\u201d leaves the next person without a verified outcome. Require a completion record or a clearly assigned follow-up.",
+    "An illustrative cleaner reports a broken dining chair. The operator records the chair\u2019s location, checks the replacement inventory and confirms the final dining setup before the next arrival."
+  ],
+  "tax-free-investors": [
+    "invoice-credit-memo-pairing",
+    "Pair project invoices with credit memos",
+    "A credit memo can change the amount owed or paid without making the original invoice disappear. Keep both documents and connect them with a reference. The record should show whether the credit reduced a balance, produced a refund or remains unused. This is a reconciliation workflow, not a determination of tax treatment.",
+    "Original invoice;Credit memo;Payment record;Vendor statement",
+    "Match the credit to its original transaction;Record how the credit was applied;Reconcile remaining balance or refund;Flag unsupported differences for review",
+    "Do not delete the original invoice after receiving a credit. Removing it makes the transaction history harder to reconstruct.",
+    "In an illustrative order, a $900 item is cancelled and a credit is applied to the next invoice. The project file preserves both invoices, the credit and the vendor statement showing its use."
+  ],
+  "investinshorttermrentals-site": [
+    "portfolio-cash-commitment-calendar",
+    "Build a portfolio cash commitment calendar",
+    "Annual investment totals can hide months when several obligations occur together. A commitment calendar places known payments, reserve transfers and planned project draws on dates. Keep expected operating receipts distinct from cash already available, and label uncertain dates so a model does not imply funding certainty.",
+    "Available cash by account;Known payment schedule;Project draw estimates;Restricted reserve balances",
+    "List commitments by payment date;Separate committed and optional spending;Show cash already available;Review timing changes with the portfolio owner",
+    "Do not fund a committed payment with an expected receipt without showing the dependency. A projection is not the same as a bank balance.",
+    "A hypothetical portfolio has a furniture balance due before a seasonal payout. The calendar identifies the timing gap even though the annual cash summary appears positive."
+  ],
+  "shorttermrentalforsale-site": [
+    "seller-document-request-status-board",
+    "Track seller document requests by decision deadline",
+    "A buyer may request many records without knowing which unresolved item affects the next decision. A status board connects each request to the issue it addresses and the deadline that matters. Keep the board separate from contractual deadlines and have the responsible professionals confirm any legal consequences.",
+    "Seller request list;Purchase milestone calendar;Document receipt log;Open diligence questions",
+    "Tie each request to a decision;Record date requested and received;Identify incomplete responses;Assign follow-up before the relevant decision date",
+    "A document marked received may still be incomplete or cover the wrong period. Record review status separately from receipt status.",
+    "A hypothetical buyer receives revenue records for only six months after requesting a full year. The board records the partial response, identifies the missing period and keeps the annual revenue question open."
+  ]
+}
