@@ -16,15 +16,16 @@
     pixel('init','1040260527597629'); pixel('track','PageView');
   }
   const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_keyword','utm_matchtype','campaign_id','ad_group_id','ad_id','gclid','gbraid','wbraid','msclkid','fbclid'];
-  const clean = s => typeof s === 'string' && s.length <= 200 && /^[a-z0-9 ._~:/%|+\-]*$/i.test(s) ? s : '';
+  const clean = s => typeof s === 'string' && s.length <= 200 && /^[a-z0-9 ._~:/|+\-]*$/i.test(s) ? s : '';
   const cleanPath = s => typeof s === 'string' && s.startsWith('/') && !s.startsWith('//') && s.length <= 200 && /^\/[a-z0-9/_.\-]*$/i.test(s) ? s : '/';
   const incoming = new URLSearchParams(location.search);
   let saved = {};
   try { saved = JSON.parse(sessionStorage.getItem('bnb-attribution-v1') || '{}'); } catch {}
   if (!saved || typeof saved !== 'object' || Array.isArray(saved)) saved = {};
-  const campaign = Object.fromEntries(keys.map(k => [k, clean(incoming.get(k) || saved[k])]).filter(([,v]) => v));
-  const sourceHost = [incoming.get('bnb_source_host'), saved.bnb_source_host].find(s => typeof s === 'string' && hosts.has(host(s)));
-  const attribution = {...campaign, bnb_source_host: sourceHost ? host(sourceHost) : host(location.hostname), bnb_source_path: cleanPath(incoming.get('bnb_source_path') || saved.bnb_source_path || location.pathname)};
+  const freshCampaign = keys.some(k => incoming.has(k));
+  const campaign = Object.fromEntries(keys.map(k => [k, clean(incoming.get(k) || (!freshCampaign && saved[k]))]).filter(([,v]) => v));
+  const sourceHost = [incoming.get('bnb_source_host'), !freshCampaign && saved.bnb_source_host].find(s => typeof s === 'string' && hosts.has(host(s)));
+  const attribution = {...campaign, bnb_source_host: sourceHost ? host(sourceHost) : host(location.hostname), bnb_source_path: cleanPath(incoming.get('bnb_source_path') || (!freshCampaign && saved.bnb_source_path) || location.pathname)};
   try { sessionStorage.setItem('bnb-attribution-v1', JSON.stringify(attribution)); } catch {}
   const calendarPath = '/widget/booking/ZsaZ20WoBCzlaqpmBxQF';
   function kind(u) {
@@ -37,7 +38,7 @@
   function decorate(u, type) {
     for (const [k,v] of Object.entries(attribution)) if (!u.searchParams.has(k)) u.searchParams.set(k,v);
     // Add referral UTMs only when there is no existing campaign or paid click ID.
-    if (!keys.some(k => u.searchParams.has(k)) && type === 'booking' && host(location.hostname) !== 'bnbaccelerator.com') {
+    if (!keys.some(k => u.searchParams.has(k)) && type === 'booking' && attribution.bnb_source_host !== 'bnbaccelerator.com') {
       u.searchParams.set('utm_source',attribution.bnb_source_host);
       u.searchParams.set('utm_medium','referral');
       u.searchParams.set('utm_campaign','bnb_network');

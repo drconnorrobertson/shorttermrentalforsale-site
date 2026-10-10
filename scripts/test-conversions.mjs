@@ -27,4 +27,7 @@ r=run('https://www.mybnbdesign.com/contact.html?email=private%40example.com&utm_
 r=run('https://www.shorttermrentalforsale.com/', ['https://unrelated.example/apply/']);assert.equal(r.anchors[0].href,'https://unrelated.example/apply/');r.click(0);assert.equal(r.window.dataLayer,undefined);
 r=run('https://seymourmaison.com/',[booking]);assert.equal(r.anchors[0].href,booking);assert.equal(r.window.__bnbConversionLoaded,undefined);
 r=run('https://shorttermrentalforsale-site-preview.vercel.app/',[booking]);assert.equal(r.window.__bnbConversionLoaded,undefined);
+const stored={}; run('https://www.investinshorttermrentals.com/?utm_source=old&utm_medium=cpc&utm_campaign=old&gclid=old',[],[],stored);
+r=run('https://www.investinshorttermrentals.com/?utm_source=new&utm_campaign=new',[booking],[],stored);u=new URL(r.anchors[0].href);assert.equal(u.searchParams.get('utm_source'),'new');assert.equal(u.searchParams.get('gclid'),null);assert.equal(u.searchParams.get('utm_medium'),null);
+r=run('https://www.bnbaccelerator.com/apply/?bnb_source_host=investinshorttermrentals.com&bnb_source_path=%2Fguide%2F',[],['https://api.leadconnectorhq.com/widget/booking/ZsaZ20WoBCzlaqpmBxQF']);u=new URL(r.iframes[0].src);assert.equal(u.searchParams.get('utm_medium'),'referral');assert.equal(u.searchParams.get('utm_source'),'investinshorttermrentals.com');
 console.log('PASS: paid/referral attribution, spoke-to-calendar handoff, event semantics, PII query exclusion, unrelated-site and preview isolation');
