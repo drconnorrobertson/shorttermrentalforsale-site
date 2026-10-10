@@ -1,0 +1,30 @@
+import fs from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const code=fs.readFileSync(new URL('../bnb-conversion.js',import.meta.url),'utf8');
+function run(url,links=[],frames=[],storage={}) {
+ const location=new URL(url),events={},pixel=[];
+ const anchors=links.map(href=>({href,getAttribute(){return this.href;}}));
+ const iframes=frames.map(src=>({src,dataset:{},getAttribute(){return this.src;}}));
+ const document={readyState:'complete',documentElement:{},head:{appendChild(){}},createElement(){return {};},addEventListener(k,f){events[k]=f;},querySelectorAll(s){return s.startsWith('a')?anchors:iframes;}};
+ const window={fbq:(...args)=>pixel.push(args)};
+ vm.runInNewContext(code,{window,document,location,URL,URLSearchParams,MutationObserver:class{observe(){}},sessionStorage:{getItem:k=>storage[k],setItem:(k,v)=>storage[k]=v}});
+ return {window,anchors,iframes,pixel,click(i){events.click?.({target:{closest:()=>anchors[i]}});}};
+}
+const booking='https://www.bnbaccelerator.com/apply/';
+let r=run('https://www.shorttermrentalforsale.com/markets/florida/?utm_source=adwords&utm_medium=cpc&utm_campaign=buyer&gclid=abc123',[booking]);
+let u=new URL(r.anchors[0].href);
+assert.equal(u.searchParams.get('utm_source'),'adwords'); assert.equal(u.searchParams.get('gclid'),'abc123');
+assert.equal(u.searchParams.get('bnb_source_host'),'shorttermrentalforsale.com');
+assert.equal(u.searchParams.get('bnb_source_path'),'/markets/florida/');
+r.click(0); assert.equal(r.window.dataLayer[0].event,'bnb_booking_click');
+assert.equal(r.pixel[0][0],'trackCustom'); assert.equal(r.pixel[0][1],'BNBBookingClick');
+assert(!JSON.stringify(r.pixel).includes('Lead'));
+let applied=run(u.href,[],['https://api.leadconnectorhq.com/widget/booking/ZsaZ20WoBCzlaqpmBxQF']);
+let iframe=new URL(applied.iframes[0].src);assert.equal(iframe.searchParams.get('gclid'),'abc123');assert.equal(iframe.searchParams.get('bnb_source_host'),'shorttermrentalforsale.com');
+r=run('https://www.investinshorttermrentals.com/',[booking]);u=new URL(r.anchors[0].href);assert.equal(u.searchParams.get('utm_medium'),'referral');
+r=run('https://www.mybnbdesign.com/contact.html?email=private%40example.com&utm_source=private%40example.com',[booking]);assert(!r.anchors[0].href.includes('private'));assert(!r.anchors[0].href.includes('email'));
+r=run('https://www.shorttermrentalforsale.com/', ['https://unrelated.example/apply/']);assert.equal(r.anchors[0].href,'https://unrelated.example/apply/');r.click(0);assert.equal(r.window.dataLayer,undefined);
+r=run('https://seymourmaison.com/',[booking]);assert.equal(r.anchors[0].href,booking);assert.equal(r.window.__bnbConversionLoaded,undefined);
+r=run('https://shorttermrentalforsale-site-preview.vercel.app/',[booking]);assert.equal(r.window.__bnbConversionLoaded,undefined);
+console.log('PASS: paid/referral attribution, spoke-to-calendar handoff, event semantics, PII query exclusion, unrelated-site and preview isolation');
