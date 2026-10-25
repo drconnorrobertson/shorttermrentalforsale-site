@@ -96,7 +96,8 @@ function page(url,title,desc,body,schema={},extra=''){return '<!doctype html><ht
 function write(url,html){const dest=path.join(out,url,'index.html');fs.mkdirSync(path.dirname(dest),{recursive:true});fs.writeFileSync(dest,html)}
 const oldXml=fs.readFileSync('sitemap.xml','utf8'),oldUrls=[...oldXml.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1].replace(origin,''));
 assert.equal(new Set(oldUrls).size,oldUrls.length);
-const target=2500, hubs=profiles.length+1, needed=target-oldUrls.length-hubs;
+const sourceLastmod=new Map([...oldXml.matchAll(/<url>\s*<loc>(.*?)<\/loc>([\s\S]*?)<\/url>/g)].map(m=>[m[1].replace(origin,''),(m[2].match(/<lastmod>(.*?)<\/lastmod>/)||[])[1]]));
+const target=2501, hubs=profiles.length+1, needed=target-oldUrls.length-hubs;
 assert(needed>0&&needed<=profiles.length*topics.length);
 if(!buyer) for(const p of profiles){p.price+=75000;p.adr+=25;p.occupancy-=.03;p.furnishing+=5000;p.name=p.beds+'-bedroom '+p.kind.toLowerCase()+' portfolio investment';}
 const records=[];
@@ -121,7 +122,7 @@ for(const f of ['index.html','blog.html','resources/index.html']){const dest=pat
 for(const p of profiles)assert(records.some(r=>r.profile===p.name),'Empty profile hub: '+p.name);
 const urls=[...oldUrls,...records.map(r=>r.url)];
 assert.equal(urls.length,target);assert.equal(new Set(urls).size,target);
-fs.writeFileSync(path.join(out,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(u=>'<url><loc>'+origin+u+'</loc><lastmod>2026-10-09</lastmod></url>').join('')+'</urlset>');
+fs.writeFileSync(path.join(out,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(u=>'<url><loc>'+origin+u+'</loc><lastmod>'+(sourceLastmod.get(u)||'2026-10-09')+'</lastmod></url>').join('')+'</urlset>');
 fs.writeFileSync(path.join(out,'content-manifest.json'),JSON.stringify({domain,publisher:'BNB Accelerator',totalPages:urls.length,originalPages:urls.length-records.length-hubs,newWorksheets:records.length,newCollections:hubs,urls:urls.map(u=>origin+u)},null,2));
 function resolve(u){if(u==='/')return path.join(out,'index.html');const s=u.replace(/^\/|\/$/g,'');const opts=[path.join(out,s,'index.html'),path.join(out,s+'.html'),path.join(out,s)];return opts.find(f=>fs.existsSync(f)&&fs.statSync(f).isFile())}
 const titles=new Set();
