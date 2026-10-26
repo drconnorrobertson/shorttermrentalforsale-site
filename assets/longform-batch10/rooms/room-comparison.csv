@@ -1,0 +1,5 @@
+room_id,plan_label,listing_label,candidate_photos,question,guest_capacity
+R01,Bedroom 1,First bedroom,F03;F04,Confirm whether both photos show this room,unconfirmed
+R02,Bedroom 2,Second bedroom,F05,Confirm location at viewing,unconfirmed
+R03,Study,Third bedroom,,Clarify label with current supporting source,unconfirmed
+R04,Open loft,Extra sleeping flexibility,F09 uncertain,Locate sofa image and clarify supported use,unconfirmed

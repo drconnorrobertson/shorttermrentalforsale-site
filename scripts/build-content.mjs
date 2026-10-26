@@ -129,3 +129,14 @@ const titles=new Set();
 for(const u of urls){const f=resolve(u);assert(f,'Missing URL '+u);const h=fs.readFileSync(f,'utf8');assert(h.includes('rel="canonical"'),'Missing canonical '+u);if(u.startsWith('/research/')){const title=h.match(/<title>(.*?)<\/title>/)[1];assert(!titles.has(title),'Duplicate title');titles.add(title);assert(h.includes('id="worksheet"'));assert(h.includes('BNB Accelerator'));assert(!/NaN|Infinity/.test(h));}}
 const test=calc(defaults(profiles[0]));assert(test.capital>0&&test.debt>0&&test.breakeven>0);assert.equal(calc({...defaults(profiles[0]),down:1}).debt,0);
 console.log(JSON.stringify({domain,totalPages:urls.length,newWorksheets:records.length,newCollections:hubs,verified:true}));
+
+// Preserve every generated research URL; append separately authored guides after the baseline inventory checks.
+const longformGuides=JSON.parse(fs.readFileSync(path.join(root,'scripts/longform-guides.json'),'utf8'));
+for(const guide of longformGuides){
+ assert(/^\/field-guides\/[a-z0-9-]+\/$/.test(guide.url));
+ assert(fs.existsSync(path.join(out,guide.url,'index.html')));
+ const sitemapFile=path.join(out,'sitemap.xml');let sitemap=fs.readFileSync(sitemapFile,'utf8');
+ assert(!sitemap.includes('<loc>'+origin+guide.url+'</loc>'));
+ sitemap=sitemap.replace('</urlset>','<url><loc>'+origin+guide.url+'</loc><lastmod>'+guide.lastmod+'</lastmod></url></urlset>');
+ fs.writeFileSync(sitemapFile,sitemap);
+}
