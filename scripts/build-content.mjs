@@ -140,3 +140,11 @@ for(const guide of longformGuides){
  sitemap=sitemap.replace('</urlset>','<url><loc>'+origin+guide.url+'</loc><lastmod>'+guide.lastmod+'</lastmod></url></urlset>');
  fs.writeFileSync(sitemapFile,sitemap);
 }
+
+// Keep the public manifest aligned with the final sitemap, including authored guides.
+const finalUrls=[...fs.readFileSync(path.join(out,'sitemap.xml'),'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
+const manifestFile=path.join(out,'content-manifest.json');
+const manifest=JSON.parse(fs.readFileSync(manifestFile,'utf8'));
+assert.equal(new Set(finalUrls).size,finalUrls.length);
+manifest.urls=finalUrls;manifest.totalPages=finalUrls.length;manifest.authoredGuidePages=longformGuides.length;
+fs.writeFileSync(manifestFile,JSON.stringify(manifest,null,2));
